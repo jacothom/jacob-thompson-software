@@ -1,0 +1,26 @@
+name: Build
+
+on: push
+
+jobs:
+    build:
+        name: Build web app
+        runs-on: ubuntu-latest
+        env:
+          working-directory: src
+
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v2
+
+          - name: npm install
+            run: npm i
+
+          - name: Build
+            run: npm run build
+
+          -name: Lint
+            - run: npm run  lint
+
+          - name: Test
+            run: npm run test
