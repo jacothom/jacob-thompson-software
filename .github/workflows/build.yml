@@ -6,8 +6,9 @@ jobs:
     build:
         name: Build web app
         runs-on: ubuntu-latest
-        env:
-          working-directory: ./src
+        defaults:
+          run:
+            working-directory: src
 
         steps:
           - name: Checkout code
