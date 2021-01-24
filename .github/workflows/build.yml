@@ -26,5 +26,5 @@ jobs:
           - name: Test
             run: npm run test
 
-          -name: Generate
+          - name: Generate
             run: npm run generate
