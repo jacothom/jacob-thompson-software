@@ -30,7 +30,7 @@ jobs:
       - name: Generate
         run: npm run generate
 
-      -name: Upload dist artifact
+      - name: Upload dist artifact
         uses: actions/upload-artifact@v2
         with:
           name: dist
