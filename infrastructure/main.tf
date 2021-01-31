@@ -1,25 +1,28 @@
+terraform {
+  backend "remote" {
+    organization = "jacob-thompson-software"
+    workspaces {
+      name = "jacob-thompson-software"
+    }
+  }
+}
+
 provider "aws" {
   region = "us-east-2"
 }
 
-terraform {
-  backend "s3" {
-    bucket = "jacob-thompson-software-infrastructure"
-    region = "us-east-2"
-    key    = "terraform"
-  }
-}
-
 locals {
   app_name        = "jacob-thompson-software"
-  prefix          = "${local.app_name}-${var.environment}"
+  prefix          = "${local.app_name}-production"
   s3_origin_id    = "S3-${local.prefix}"
   hosted_zone_id  = "Z0048127SBO7AHJZUUHP"
   certificate_arn = "arn:aws:acm:us-east-2:179724145815:certificate/36fe269b-5925-43b5-9bb4-425046412f10"
+  environment     = "production"
+  website_alias   = "jacobthompsonsoftware.com"
 }
 
 resource "aws_s3_bucket" "webapp_bucket" {
-  bucket = "${local.prefix}"
+  bucket = local.prefix
   acl    = "public-read"
   policy = <<EOF
 {
@@ -36,6 +39,7 @@ resource "aws_s3_bucket" "webapp_bucket" {
 }
 EOF
 
+
   website {
     index_document = "index.html"
     error_document = "index.html"
@@ -44,8 +48,8 @@ EOF
 
 resource "aws_cloudfront_distribution" "webapp_distribution" {
   origin {
-    domain_name = "${aws_s3_bucket.webapp_bucket.website_endpoint}"
-    origin_id   = "${local.s3_origin_id}"
+    domain_name = aws_s3_bucket.webapp_bucket.website_endpoint
+    origin_id   = local.s3_origin_id
 
     custom_origin_config {
       http_port              = 80
@@ -59,14 +63,14 @@ resource "aws_cloudfront_distribution" "webapp_distribution" {
   is_ipv6_enabled     = true
   default_root_object = "index.html"
 
-  aliases = ["${var.website_alias}"]
+  aliases = [local.website_alias]
 
   tags = {
-    Environment = "${var.environment}"
+    Environment = local.environment
   }
 
   viewer_certificate {
-    acm_certificate_arn      = "${local.certificate_arn}"
+    acm_certificate_arn      = local.certificate_arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.1_2016"
   }
@@ -80,7 +84,7 @@ resource "aws_cloudfront_distribution" "webapp_distribution" {
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "${local.s3_origin_id}"
+    target_origin_id = local.s3_origin_id
 
     compress = true
 
