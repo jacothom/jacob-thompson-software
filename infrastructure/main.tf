@@ -16,7 +16,7 @@ locals {
   prefix          = "${local.app_name}-production"
   s3_origin_id    = "S3-${local.prefix}"
   hosted_zone_id  = "Z0048127SBO7AHJZUUHP"
-  certificate_arn = "arn:aws:acm:us-east-2:179724145815:certificate/36fe269b-5925-43b5-9bb4-425046412f10"
+  certificate_arn = "arn:aws:acm:us-east-1:179724145815:certificate/3f5e12d1-cb73-4734-8f4a-6f20ab91355f"
   environment     = "production"
   website_alias   = "jacobthompsonsoftware.com"
 }
