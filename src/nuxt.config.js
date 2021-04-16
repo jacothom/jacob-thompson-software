@@ -21,15 +21,15 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || '',
-      },
+        content: process.env.npm_package_description || ''
+      }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
    ** Global CSS
    */
-  css: ['@/assets/css/bulmaswatch.min.css'],
+  css: [],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
@@ -43,15 +43,13 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ['@nuxt/typescript-build'],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/vuetify'],
   /*
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://buefy.github.io/#/documentation
-    'nuxt-buefy',
     // Doc: https://github.com/nuxt/content
-    '@nuxt/content',
+    '@nuxt/content'
   ],
   /*
    ** Content module configuration
@@ -63,4 +61,19 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
+  vuetify: {
+    theme: {
+      themes: {
+        light: {
+          primary: '#3f51b5',
+          secondary: '#00bcd4',
+          accent: '#cddc39',
+          error: '#f44336',
+          warning: '#ff9800',
+          info: '#607d8b',
+          success: '#4caf50'
+        }
+      }
+    }
+  }
 }
