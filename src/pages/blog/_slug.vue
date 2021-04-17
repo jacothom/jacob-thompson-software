@@ -1,16 +1,20 @@
 <template>
-  <section class="section">
-    <h1 class="title is-1">{{ article.title }}</h1>
-    <h4 class="subtitle is-4">{{ article.description }}</h4>
+  <v-container>
+    <h1>{{ article.title }}</h1>
+    <h4>{{ article.description }}</h4>
 
-    <p>Created on: {{ formatDate(article.createdAt) }}</p>
-    <p>Last updated: {{ formatDate(article.updatedAt) }}</p>
-    <hr />
+    <!--    <table-of-contents :table-of-contents="article.toc"></table-of-contents>-->
 
-    <table-of-contents :table-of-contents="article.toc"></table-of-contents>
+    <nuxt-content :document="article" style="padding-top: 12px"></nuxt-content>
 
-    <nuxt-content :document="article"></nuxt-content>
-  </section>
+    <p style="padding-top: 6px">
+      Created on: {{ formatDate(article.createdAt) }}
+      <br />
+      <span v-if="articleHasBeenUpdated">
+        Last updated: {{ formatDate(article.updatedAt) }}
+      </span>
+    </p>
+  </v-container>
 </template>
 
 <script>
@@ -24,10 +28,10 @@ export default {
     const article = await $content('articles', params.slug).fetch()
     return { article }
   },
-  // computed: {
-  //   articleHasBeenUpdated() {
-  //     this.article.createdAt
-  //   }
-  // }
+  computed: {
+    articleHasBeenUpdated() {
+      return this.article.createdAt != this.article.updatedAt
+    }
+  }
 }
 </script>

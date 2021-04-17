@@ -24,10 +24,18 @@
       </v-container>
     </v-main>
 
-    <v-bottom-navigation dark color="primary" class="hidden-sm-and-up">
-      <v-btn>
+    <v-bottom-navigation class="hidden-sm-and-up">
+      <v-btn to="/">
         <span>Home</span>
         <v-icon>mdi-home</v-icon>
+      </v-btn>
+      <v-btn to="/about">
+        <span>About</span>
+        <v-icon>mdi-account</v-icon>
+      </v-btn>
+      <v-btn to="/blog">
+        <span>Blog</span>
+        <v-icon>mdi-blogger</v-icon>
       </v-btn>
     </v-bottom-navigation>
   </v-app>

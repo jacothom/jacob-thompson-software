@@ -2,7 +2,7 @@
   <v-container>
     <v-row dense>
       <v-col v-for="article of articles" :key="article.slug" cols="12">
-        <v-card class="mx-auto">
+        <v-card class="mx-auto" :to="`/blog/${article.slug}`">
           <v-card-title>{{ article.title }}</v-card-title>
           <v-card-text>
             {{ article.description }}
@@ -25,6 +25,6 @@ export default {
       .fetch()
 
     return { articles }
-  }
+  },
 }
 </script>
