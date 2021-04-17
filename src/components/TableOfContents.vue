@@ -16,8 +16,8 @@ export default {
   props: {
     tableOfContents: {
       type: Object,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>

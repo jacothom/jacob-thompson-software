@@ -3,8 +3,6 @@
     <h1>{{ article.title }}</h1>
     <h4>{{ article.description }}</h4>
 
-    <!--    <table-of-contents :table-of-contents="article.toc"></table-of-contents>-->
-
     <nuxt-content :document="article" style="padding-top: 12px"></nuxt-content>
 
     <p style="padding-top: 6px">
@@ -18,11 +16,9 @@
 </template>
 
 <script>
-import TableOfContents from '../../components/TableOfContents'
 import formatDate from '../../mixins/formatDate'
 
 export default {
-  components: { TableOfContents },
   mixins: [formatDate],
   async asyncData({ $content, params }) {
     const article = await $content('articles', params.slug).fetch()
@@ -30,8 +26,8 @@ export default {
   },
   computed: {
     articleHasBeenUpdated() {
-      return this.article.createdAt != this.article.updatedAt
-    }
-  }
+      return this.article.createdAt !== this.article.updatedAt
+    },
+  },
 }
 </script>
