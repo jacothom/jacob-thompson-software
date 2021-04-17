@@ -49,7 +49,7 @@ export default {
    */
   modules: [
     // Doc: https://github.com/nuxt/content
-    '@nuxt/content'
+    '@nuxt/content',
   ],
   /*
    ** Content module configuration
@@ -71,9 +71,9 @@ export default {
           error: '#f44336',
           warning: '#ff9800',
           info: '#607d8b',
-          success: '#4caf50'
-        }
-      }
-    }
-  }
+          success: '#4caf50',
+        },
+      },
+    },
+  },
 }
