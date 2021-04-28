@@ -30,9 +30,6 @@ jobs:
       - name: Generate
         run: npm run generate --fail-on-error
 
-      - name: Check dist content
-        run: ls dist
-
       - name: Upload dist artifact
         uses: actions/upload-artifact@v2
         with:
@@ -78,12 +75,15 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
-        - uses: actions/checkout@v2
+        - name: Download dist
+          uses: actions/download-artifact@v2
+          with:
+            name: dist
 
         - name: Deploy
           uses: reggionick/s3-deploy@v3
           with:
-            folder: build
+            folder: dist
             bucket: ${{ secrets.S3_BUCKET }}
             bucket-region: ${{ secrets.S3_BUCKET_REGION }}
             dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
