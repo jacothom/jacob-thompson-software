@@ -80,6 +80,9 @@ jobs:
           with:
             name: dist
 
+        - name: Check dist content
+          run: ls dist
+
         - name: Deploy
           uses: reggionick/s3-deploy@v3
           with:
@@ -90,4 +93,4 @@ jobs:
             invalidation: /
             delete-removed: true
             no-cache: true
-            private: true
+            private: false
