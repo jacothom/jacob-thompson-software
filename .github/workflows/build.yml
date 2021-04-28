@@ -80,6 +80,9 @@ jobs:
           with:
             name: dist
 
+        - name: Check current directory
+          run: pwd
+
         - name: Check dist content
           run: ls dist
 
