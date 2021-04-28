@@ -30,11 +30,14 @@ jobs:
       - name: Generate
         run: npm run generate --fail-on-error
 
+      - name: Check dist content
+        run: ls dist
+
       - name: Upload dist artifact
         uses: actions/upload-artifact@v2
         with:
           name: dist
-          path: ./dist
+          path: dist
           if-no-files-found: error
 
   infrastructure:
