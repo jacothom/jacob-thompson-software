@@ -37,9 +37,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: dist
-          path: |
-            **/dist
-            !**/dist/**/*.md
+          path: src/dist
           if-no-files-found: error
 
   infrastructure:
