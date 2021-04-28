@@ -81,12 +81,6 @@ jobs:
             name: dist
             path: dist
 
-        - name: Check current directory
-          run: pwd
-
-        - name: Check dist content
-          run: ls dist
-
         - name: Deploy
           uses: reggionick/s3-deploy@v3
           with:
