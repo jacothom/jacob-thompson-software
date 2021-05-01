@@ -1,3 +1,5 @@
+import getSitemapRoutes from './sitemapRouteBuilder'
+
 export default {
   /*
    ** Nuxt rendering mode
@@ -50,6 +52,7 @@ export default {
   modules: [
     // Doc: https://github.com/nuxt/content
     '@nuxt/content',
+    '@nuxtjs/sitemap',
   ],
   /*
    ** Content module configuration
@@ -76,4 +79,9 @@ export default {
       },
     },
   },
+  sitemap: {
+    hostname: 'https://jacobthompsonsoftware.com',
+    gzip: true,
+    routes: getSitemapRoutes
+  }
 }
