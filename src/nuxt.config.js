@@ -82,6 +82,6 @@ export default {
   sitemap: {
     hostname: 'https://jacobthompsonsoftware.com',
     gzip: true,
-    routes: getSitemapRoutes
-  }
+    routes: getSitemapRoutes,
+  },
 }
