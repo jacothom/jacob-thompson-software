@@ -1,5 +1,3 @@
-import getSitemapRoutes from './sitemapRouteBuilder'
-
 export default {
   /*
    ** Nuxt rendering mode
@@ -49,11 +47,7 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [
-    // Doc: https://github.com/nuxt/content
-    '@nuxt/content',
-    '@nuxtjs/sitemap',
-  ],
+  modules: ['@nuxt/content', '@nuxtjs/sitemap'],
   /*
    ** Content module configuration
    ** See https://content.nuxtjs.org/configuration
@@ -82,6 +76,10 @@ export default {
   sitemap: {
     hostname: 'https://jacobthompsonsoftware.com',
     gzip: true,
-    routes: getSitemapRoutes,
+    routes: async () => {
+      const { $content } = require('@nuxt/content')
+      const posts = await $content('articles').fetch()
+      return posts.map((article) => `/blog/${article.slug}`)
+    },
   },
 }
