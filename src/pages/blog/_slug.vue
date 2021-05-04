@@ -8,7 +8,9 @@
     <br />
     <hr />
 
-    <p style="padding-top: 6px">
+    <blog-tags :tags="article.tags" style="padding-top: 6px"></blog-tags>
+
+    <p>
       Created on: {{ formatDate(article.createdAt) }}
       <br />
       <span v-if="articleHasBeenUpdated">
@@ -35,8 +37,8 @@ export default {
   head() {
     return {
       title: this.article.title,
-      description: this.article.description,
-    }
+      description: this.article.description
+    },
   },
 }
 </script>
