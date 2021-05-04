@@ -37,8 +37,8 @@ export default {
   head() {
     return {
       title: this.article.title,
-      description: this.article.description
-    },
+      description: this.article.description,
+    }
   },
 }
 </script>
