@@ -5,6 +5,9 @@
 
     <nuxt-content :document="article" style="padding-top: 12px"></nuxt-content>
 
+    <br />
+    <hr />
+
     <p style="padding-top: 6px">
       Created on: {{ formatDate(article.createdAt) }}
       <br />
@@ -28,6 +31,12 @@ export default {
     articleHasBeenUpdated() {
       return this.article.createdAt !== this.article.updatedAt
     },
+  },
+  head() {
+    return {
+      title: this.article.title,
+      description: this.article.description,
+    }
   },
 }
 </script>

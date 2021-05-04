@@ -26,5 +26,12 @@ export default {
 
     return { articles }
   },
+  head() {
+    return {
+      title: 'Blog',
+      description:
+        'A place for me to write, document learning, and give back to the software community.',
+    }
+  },
 }
 </script>
