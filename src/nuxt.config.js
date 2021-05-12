@@ -46,7 +46,11 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/vuetify'],
+  buildModules: [
+    '@nuxt/typescript-build',
+    '@nuxtjs/vuetify',
+    '@nuxtjs/google-analytics',
+  ],
   /*
    ** Nuxt.js modules
    */
@@ -84,5 +88,8 @@ export default {
       const posts = await $content('articles').fetch()
       return posts.map((article) => `/blog/${article.slug}`)
     },
+  },
+  googleAnalytics: {
+    id: 'G-H52BXGY28R',
   },
 }
