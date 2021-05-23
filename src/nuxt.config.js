@@ -49,7 +49,7 @@ export default {
   buildModules: [
     '@nuxt/typescript-build',
     '@nuxtjs/vuetify',
-    '@nuxtjs/google-analytics',
+    '@nuxtjs/google-gtag',
   ],
   /*
    ** Nuxt.js modules
@@ -89,7 +89,7 @@ export default {
       return posts.map((article) => `/blog/${article.slug}`)
     },
   },
-  googleAnalytics: {
+  'google-gtag': {
     id: 'G-H52BXGY28R',
   },
 }
