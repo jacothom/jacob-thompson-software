@@ -1,6 +1,8 @@
 ---
 title: Nuxt Content Sitemap
 description: Add dynamic Nuxt Content routes to sitemap
+createdAt: 5/2/2021
+updatedAt: 5/2/2021
 tags: ['nuxt.js', 'vue', '@nuxt/content']
 ---
 
